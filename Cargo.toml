@@ -1,0 +1,21 @@
+[workspace]
+resolver = "2"
+members = ["xedio-data"
+
+]
+
+[workspace.dependencies]
+mssf-com = {version = "0.4" }
+mssf-core = "0.4"
+mssf-pal = "0.4"
+mssf-util = "0.4"
+tokio-util = "0.7"
+tokio = { version = "1", features = ["full"] }
+tokio-stream = "0.1"
+bytes = "1"
+futures = "0.3"
+async-trait = "0.1"
+serde = "1"
+serde_json = "1"
+
+tracing = "0.1"
