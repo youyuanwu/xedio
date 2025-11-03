@@ -1,3 +1,4 @@
+#![allow(dead_code, unused_variables)]
 use std::collections::HashMap;
 
 use async_trait::async_trait;
@@ -32,6 +33,7 @@ pub enum PrimaryEvent {
     }, // TODO: remove replica
 }
 
+#[allow(dead_code)]
 pub struct XedioReplicatorInternal {
     state: Mutex<Box<dyn StateProvider>>,
     replica_manager: ReplicaManager,
@@ -209,7 +211,7 @@ impl Replicator for XedioReplicatorInternal {
 
     async fn build_replica(
         &self,
-        mut replica: crate::types::ReplicaInfo,
+        replica: crate::types::ReplicaInfo,
         token: crate::types::CancelToken,
     ) -> crate::Result<()> {
         // TODO: track this replica.
@@ -265,6 +267,12 @@ pub struct ReplicaManager {
     previous_quorum: usize,
 }
 
+impl Default for ReplicaManager {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl ReplicaManager {
     pub fn new() -> Self {
         Self {
@@ -287,9 +295,9 @@ impl ReplicaManager {
         }
 
         for r in &previous.members {
-            if !new_replicas.contains_key(&r.id) {
-                new_replicas.insert(r.id, r.client.clone_box());
-            }
+            new_replicas
+                .entry(r.id)
+                .or_insert_with(|| r.client.clone_box());
         }
 
         self.replicas = new_replicas;

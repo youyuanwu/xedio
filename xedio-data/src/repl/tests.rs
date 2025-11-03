@@ -1,4 +1,4 @@
-use std::{collections::HashMap, sync::Arc};
+use std::collections::HashMap;
 
 use async_trait::async_trait;
 use bytes::Bytes;
@@ -6,7 +6,7 @@ use futures::StreamExt;
 
 use crate::{
     traits2::{BackgroundCopyStateProvider, BackgroundStateReplicator},
-    types::{Lsn, ReplData, Role, TokioReceiverStream},
+    types::{Lsn, TokioReceiverStream},
 };
 
 #[derive(Debug)]

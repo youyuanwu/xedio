@@ -1,0 +1,9 @@
+# Map port 30080 on the host to port 30080 on the kind control-plane node
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      - containerPort: 30080  # NodePort range: 30000–32767
+        hostPort: 30080        # Port on your host
+        protocol: TCP

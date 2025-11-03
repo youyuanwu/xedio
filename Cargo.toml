@@ -1,14 +1,14 @@
 [workspace]
 resolver = "2"
-members = ["xedio-data"
+members = [ "apps/xdata-app","xedio-data"
 
 ]
 
 [workspace.dependencies]
-mssf-com = {version = "0.4" }
-mssf-core = "0.4"
-mssf-pal = "0.4"
-mssf-util = "0.4"
+mssf-com = {version = "0.5" }
+mssf-core = "0.5"
+mssf-pal = "0.5"
+mssf-util = "0.5"
 tokio-util = "0.7"
 tokio = { version = "1", features = ["full"] }
 tokio-stream = "0.1"
@@ -17,5 +17,8 @@ futures = "0.3"
 async-trait = "0.1"
 serde = "1"
 serde_json = "1"
-
 tracing = "0.1"
+tonic = "0.14"
+prost = "0.14"
+tonic-prost-build = "0.14"
+tonic-prost = "0.14"

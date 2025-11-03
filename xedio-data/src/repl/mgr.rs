@@ -24,7 +24,7 @@ impl ReplMgr {
                 .send_replication_data_item(repl_data)
                 .await
                 .expect("error for repl not supported");
-            self.progress.insert(replica_id.clone(), lsn);
+            self.progress.insert(*replica_id, lsn);
         }
         Ok(lsn)
     }
