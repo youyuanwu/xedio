@@ -16,11 +16,11 @@ add_custom_target(xdata-app-image
 )
 
 add_custom_target(xdata-deploy
-    COMMAND kubectl apply -f apps/xdata-app/deploy/deployment.yaml
+    COMMAND kubectl apply -f apps/xdata-app/deploy/statefulset.yaml
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
 
 add_custom_target(xdata-delete
-    COMMAND kubectl delete -f apps/xdata-app/deploy/deployment.yaml
+    COMMAND kubectl delete -f apps/xdata-app/deploy/statefulset.yaml
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
